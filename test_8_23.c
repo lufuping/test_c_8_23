@@ -1,18 +1,18 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#include <stdlib.h>
 
-// ¹é²¢Á½¸öÓĞĞòÊı×é
+
+// å½’å¹¶ä¸¤ä¸ªæœ‰åºæ•°ç»„
 void merge(int arr[], int left, int mid, int right) {
     int i, j, k;
 
     int n1 = mid - left + 1;
     int n2 = right - mid;
 
-    // ´´½¨ÁÙÊ±Êı×é
+    // åˆ›å»ºä¸´æ—¶æ•°ç»„
     int L[n1], R[n2];
 
-    // ½«Êı¾İ¸´ÖÆµ½ÁÙÊ±Êı×é
+    // å°†æ•°æ®å¤åˆ¶åˆ°ä¸´æ—¶æ•°ç»„
     for (i = 0; i < n1; i++) {
         L[i] = arr[left + i];
     }
@@ -20,10 +20,10 @@ void merge(int arr[], int left, int mid, int right) {
         R[j] = arr[mid + 1 + j];
     }
 
-    // ºÏ²¢ÁÙÊ±Êı×é
-    i = 0; // ×ó×ÓÊı×éµÄË÷Òı
-    j = 0; // ÓÒ×ÓÊı×éµÄË÷Òı
-    k = left; // ºÏ²¢ºóÊı×éµÄË÷Òı
+    // åˆå¹¶ä¸´æ—¶æ•°ç»„
+    i = 0; // å·¦å­æ•°ç»„çš„ç´¢å¼•
+    j = 0; // å³å­æ•°ç»„çš„ç´¢å¼•
+    k = left; // åˆå¹¶åæ•°ç»„çš„ç´¢å¼•
     while (i < n1 && j < n2) {
         if (L[i] <= R[j]) {
             arr[k] = L[i];
@@ -36,7 +36,7 @@ void merge(int arr[], int left, int mid, int right) {
         k++;
     }
 
-    // ¸´ÖÆÊ£ÓàÔªËØ
+    // å¤åˆ¶å‰©ä½™å…ƒç´ 
     while (i < n1) {
         arr[k] = L[i];
         i++;
@@ -49,21 +49,21 @@ void merge(int arr[], int left, int mid, int right) {
     }
 }
 
-// ¹é²¢ÅÅĞò
+// å½’å¹¶æ’åº
 void mergeSort(int arr[], int left, int right) {
     if (left < right) {
         int mid = left + (right - left) / 2;
 
-        // ·Ö¸îÊı×é£¬·Ö±ğ½øĞĞ¹é²¢ÅÅĞò
+        // åˆ†å‰²æ•°ç»„ï¼Œåˆ†åˆ«è¿›è¡Œå½’å¹¶æ’åº
         mergeSort(arr, left, mid);
         mergeSort(arr, mid + 1, right);
 
-        // ¹é²¢ÒÑÅÅĞòµÄÊı×é
+        // å½’å¹¶å·²æ’åºçš„æ•°ç»„
         merge(arr, left, mid, right);
     }
 }
 
-// ´òÓ¡Êı×éÔªËØ
+// æ‰“å°æ•°ç»„å…ƒç´ 
 void printArray(int arr[], int size) {
     int i;
     for (i = 0; i < size; i++) {
@@ -76,12 +76,12 @@ int main() {
     int arr[] = { 42, 23, 7, 16, 69, 37 };
     int size = sizeof(arr) / sizeof(arr[0]);
 
-    printf("Ô­Ê¼Êı×é: ");
+    printf("åŸå§‹æ•°ç»„: ");
     printArray(arr, size);
 
     mergeSort(arr, 0, size - 1);
 
-    printf("ÅÅĞòºóµÄÊı×é: ");
+    printf("æ’åºåçš„æ•°ç»„: ");
     printArray(arr, size);
 
     return 0;
